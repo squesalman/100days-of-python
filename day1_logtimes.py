@@ -2,6 +2,7 @@
 from datetime import datetime
 import os
 import urllib.request
+import re
 
 SHUTDOWN_EVENT = 'Shutdown initiated'
 
@@ -27,7 +28,9 @@ def convert_to_datetime(line):
        returns:
        datetime(2014, 7, 3, 23, 27, 51)
     """
-    pass
+    for eachline in line:
+        print(eachline)
+        
 
 
 def time_between_shutdowns(loglines):
@@ -37,4 +40,16 @@ def time_between_shutdowns(loglines):
        Return this datetime.timedelta object.
     """
     pass
+
+test = convert_to_datetime(loglines)
+
+line1 = 'ERROR 2014-07-03T23:24:31 supybot Invalid user dictionary file, resetting to empty'
+#line1_obj = datetime(int(line1))
+
+#print(line1)
+#print(line1_obj.date)
+
+print([int(s) for s in line1.split('-') if s.isdigit()])
+
+print(re.findall(line1))
 # %%
